@@ -1,0 +1,18 @@
+#!/bin/bash
+# Read from netstat every 2 seconds.
+function infinitewatcher () {
+while netgar=666 ; do
+  netstat -tanWel | while read line;
+    do echo "$line" >> /var/log/net.log ;
+    sleep 2;
+  done
+done
+}
+
+# Cycle of madness
+netgar=666 ;
+
+while true; do
+infinitewatcher
+:>/var/log/log/net.log ;
+done
