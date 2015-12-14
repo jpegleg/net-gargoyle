@@ -18,4 +18,4 @@ while true; do
 infinitewatcher
 :>/var/log/log/net.log ;
 done
-ps aux | grep "/bin/bash /usr/local/bin/deny-sorter" | grep -v grep | awk '{print $2}' | xargs kill -9
+ps aux | grep "/bin/bash /usr/local/bin/sorter" | grep -v grep | awk '{print $2}' | xargs kill -9
