@@ -1,0 +1,30 @@
+#!/bin/bash
+# Search for unique IPs with "(\d+)(\d+)(\d+)(\d+)" netstat output and report new occurrnces.
+mkdir -p /var/tmp/learner/ 2> /dev/null
+if [ -f /var/tmp/learner/lock-deny-sorter ]; then
+        exit 0
+else
+        touch /var/tmp/learner/lock-deny-sorter
+        touch /var/tmp/learner/deny.log /var/tmp/learner/deny.last /var/tmp/learner/deny.dat /var/tmp/learner/lock.dat
+        cp /var/tmp/learner/deny.log /var/tmp/learner/deny.last
+        cat /var/tmp/learner/deny.last >> /var/tmp/learner/deny.archive
+        sort -u /var/tmp/learner/deny.archive > /var/tmp/learner/deny.dat
+        grep -ioP "(\d+)(\d+)(\d+)(\d+)" /var/log/net.log  > /var/tmp/learner/deny.log
+        sort -u /var/tmp/learner/deny.log > /var/tmp/learner/deny.tmp
+        cp /var/tmp/learner/deny.tmp /var/tmp/learner/deny.log
+        cp /var/tmp/learner/deny.last /var/tmp/learner/deny.in
+        cat /var/tmp/learner/deny.archive |  while read line; do
+                lock=$(echo "$line" | tr -cd '[[:alnum:]]._-' );
+                touch /var/tmp/learner/"$lock".lock ;
+                echo "$line" > /var/tmp/learner/"$lock".lock ;
+        done
+        cat /var/tmp/learner/*lock | sort -u > /var/tmp/learner/lock.dat
+        sort -u /var/log/net.log > /var/log/net.tmp
+        cp /var/log/net.tmp /var/log/net.log
+        sort -u /var/tmp/learner/lock.dat > /var/tmp/learner/lock.dat.tmp
+        cp /var/tmp/learner/lock.dat.tmp /var/tmp/learner/lock.dat
+        comm -23 /var/log/net.log /var/tmp/learner/lock.dat | sort -u > /var/tmp/learner/new.deny
+        cat /var/tmp/learner/new.deny >> /var/log/new-deny.log
+        cp /var/tmp/learner/lock.dat /var/log/net.log
+        rm /var/tmp/learner/lock-deny-sorter
+fi
