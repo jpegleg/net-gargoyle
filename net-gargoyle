@@ -2,7 +2,7 @@
 # Read from netstat every 2 seconds.
 function infinitewatcher () {
 while netgar=666 ; do
-  netstat -tanWel | while read line;
+  netstat -tan | while read line;
     do echo "$line" >> /var/log/net.log ;
     sleep 2;
   done
