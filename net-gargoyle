@@ -12,8 +12,6 @@ done
 # Cycle of madness
 netgar=666 ;
 
-ps aux | grep net-gargoyle | awk '{print $2}' | grep -v grep | xargs kill -9
-
 while true; do
 infinitewatcher
 :>/var/log/log/net.log ;
