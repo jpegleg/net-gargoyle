@@ -9,7 +9,7 @@ else
         cp /var/tmp/learner/deny.log /var/tmp/learner/deny.last
         cat /var/tmp/learner/deny.last >> /var/tmp/learner/deny.archive
         sort -u /var/tmp/learner/deny.archive > /var/tmp/learner/deny.dat
-        grep -ioP "(\d+)(\d+)(\d+)(\d+)" /var/log/net.log  > /var/tmp/learner/deny.log
+        grep -ioP "(\d+).(\d+).(\d+).(\d+)" /var/log/net.log  > /var/tmp/learner/deny.log
         sort -u /var/tmp/learner/deny.log > /var/tmp/learner/deny.tmp
         cp /var/tmp/learner/deny.tmp /var/tmp/learner/deny.log
         cp /var/tmp/learner/deny.last /var/tmp/learner/deny.in
