@@ -2,7 +2,7 @@
 # Read from netstat every 2 seconds.
 while true; do
   netstat -tan | grep -v Proto | grep -v Active | while read line;
-    do echo "$line" >> /var/log/net.log ;
+    do echo "$line" >> /var/log/net.log &&
     sleep 2;
   done
 done
