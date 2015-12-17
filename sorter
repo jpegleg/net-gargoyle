@@ -1,5 +1,5 @@
 #!/bin/bash
-# Search for unique IPs with "(\d+)(\d+)(\d+)(\d+)" netstat output and report new occurrnces.
+# Search for unique IPs with "(\d+)\.(\d+)\.(\d+)\.(\d+)" netstat output and report new occurrnces.
 mkdir -p /var/tmp/learner/ 2> /dev/null
 if [ -f /var/tmp/learner/lock-deny-sorter ]; then
         exit 0
