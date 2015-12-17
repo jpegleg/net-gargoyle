@@ -15,8 +15,8 @@ else
         cp /var/tmp/learner/deny.last /var/tmp/learner/deny.in
         cat /var/tmp/learner/deny.archive |  while read line; do
                 lock=$(echo "$line" | tr -cd '[[:alnum:]]._-' );
-                touch /var/tmp/learner/"$lock"-$(date +'%d%m%y-%H-%M-%S').lock ;
-                echo "$line" > /var/tmp/learner/"$lock"*.lock ;
+                touch /var/tmp/learner/"$lock".lock ;
+                echo "$line" > /var/tmp/learner/"$lock".lock ;
         done
         cat /var/tmp/learner/*lock | sort -u > /var/tmp/learner/lock.dat
         sort -u /var/log/net.log > /var/log/net.tmp
