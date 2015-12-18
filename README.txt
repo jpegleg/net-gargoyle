@@ -9,7 +9,7 @@ Dependancies:
 sec.pl callable from a /usr bin location like /usr/local/bin/
 
 SEC documentation:
-echo $! > /var/run/program.pid
+https://simple-evcorr.github.io/
 
 Start up the net-gargoyle:
 sudo ./start-net-gargoyle.sh
