@@ -1,5 +1,5 @@
 #!/bin/bash
-# Read from netstat every 2 seconds.
+# Read from ss (netstat) every 2 seconds.
 while true; do
   ss -an | grep -v State | while read line;
     do echo "$line" >> /var/log/net.log &&
