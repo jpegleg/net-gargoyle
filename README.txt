@@ -1,4 +1,6 @@
 # net-gargoyle
+Read the Simple Event Correlator documentation: https://simple-evcorr.github.io/
+
 Monitor your network connections and create a catalog of connections with the pattern-learner template.
 
 Pattern learner template: https://github.com/jpegleg/pattern-learner
