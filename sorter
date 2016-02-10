@@ -3,31 +3,38 @@
 wkdir=/var/tmp/learner
 mkdir -p "$wkdir"/ 2> /dev/null
 if [ -f "$wkdir"/lock-catalog-sorter ]; then
-        exit 0
+        exit 0; 
 else
-        touch "$wkdir"/lock-catalog-sorter
-        touch "$wkdir"/catalog.log /wkdir/catalog.last /wkdir/catalog.dat /wkdir/lock.dat
-        cp "$wkdir"/catalog.log /wkdir/catalog.last
-        cat "$wkdir"/catalog.last >> /wkdir/catalog.archive
-        sort -u "$wkdir"/catalog.archive > /wkdir/catalog.dat
-        grep -ioP "(\d+)\.(\d+)\.(\d+)\.(\d+)" /var/log/net.log  > "$wkdir"/catalog.log
-        sort -u "$wkdir"/catalog.log > /wkdir/catalog.tmp
-        cp "$wkdir"/catalog.tmp /wkdir/catalog.log
-        cp "$wkdir"/catalog.last /wkdir/catalog.in
+        touch "$wkdir"/lock-catalog-sorter;
+        touch "$wkdir"/catalog.log;  
+        touch "$wkdir"/catalog.tmp;
+        touch "$wkdir"/catalog.archive;
+        touch "$wkdir"/catalog.last;
+        touch "$wkdir"/new.catalog;
+        touch /var/tmp/net.tmp;
+        touch /var/tmp/net.log;
+        touch /var/tmp/lock.dat;
+        cp "$wkdir"/catalog.log /"$wkdir"/catalog.last;
+        cat "$wkdir"/catalog.last >> /"$wkdir"/catalog.archive;
+        sort -u "$wkdir"/catalog.archive > /"$wkdir"/catalog.dat;
+        grep -ioP "(\d+)\.(\d+)\.(\d+)\.(\d+)" /var/log/net.log  > "$wkdir"/catalog.log;
+        sort -u "$wkdir"/catalog.log > /"$wkdir"/catalog.tmp;
+        cp "$wkdir"/catalog.tmp /"$wkdir"/catalog.log;
+        cp "$wkdir"/catalog.last /"$wkdir"/catalog.in;
         cat "$wkdir"/catalog.archive |  while read line; do
                 lock=$(echo "$line" | tr -cd '[[:alnum:]]._-' );
-                touch "$wkdir"/"$lock".lock ;
-                echo "$line" > "$wkdir"/"$lock".lock ;
-        done
-        cat "$wkdir"/*lock | sort -u > /wkdir/lock.dat
-        sort -u /var/log/net.log > /var/log/net.tmp
-        cp /var/log/net.tmp /var/log/net.log
-        sort -u "$wkdir"/lock.dat > /wkdir/lock.dat.tmp
-        cp "$wkdir"/lock.dat.tmp /wkdir/lock.dat
-        comm -23 /var/log/net.log "$wkdir"/lock.dat | sort -u > /wkdir/new.catalog
-        cat "$wkdir"/new.catalog >> /var/log/new-catalog.log
-        cp "$wkdir"/lock.dat /var/log/net.log
-        rm "$wkdir"/lock-catalog-sorter
+                touch "$wkdir"/"$lock".lock;
+                echo "$line" > "$wkdir"/"$lock".lock;
+        done;
+        cat "$wkdir"/*lock | sort -u > /"$wkdir"/lock.dat;
+        sort -u /var/log/net.log > /var/log/net.tmp;
+        cp /var/log/net.tmp /var/log/net.log;
+        sort -u "$wkdir"/lock.dat > /"$wkdir"/lock.dat.tmp;
+        cp "$wkdir"/lock.dat.tmp /"$wkdir"/lock.dat;
+        comm -23 /var/log/net.log "$wkdir"/lock.dat | sort -u > "$wkdir"/new.catalog;
+        cat "$wkdir"/new.catalog >> /var/log/new-catalog.log;
+        cp "$wkdir"/lock.dat /var/log/net.log;
+        rm "$wkdir"/lock-catalog-sorter;
 fi
 
 ps aux | grep "/bin/bash /usr/local/bin/sorter" | grep -v grep | awk '{print $2}' | xargs kill -9
