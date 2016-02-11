@@ -1,4 +1,6 @@
 #!/bin/sh
+chmod +x sorter
+chmod +x ./*sh
 mkdir -p /var/tmp/learner
 touch /var/log/net.log
 touch /var/log/catalog.log
