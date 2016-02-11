@@ -3,10 +3,10 @@
 wkdir=/var/tmp/learner
 mkdir -p "$wkdir"/ 2> /dev/null
 if [ -f "$wkdir"/lock-catalog-sorter ]; then
-        exit 0; 
+        exit 0;
 else
         touch "$wkdir"/lock-catalog-sorter;
-        touch "$wkdir"/catalog.log;  
+        touch "$wkdir"/catalog.log;
         touch "$wkdir"/catalog.tmp;
         touch "$wkdir"/catalog.archive;
         touch "$wkdir"/catalog.last;
