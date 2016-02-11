@@ -14,7 +14,7 @@ SEC documentation:
 https://simple-evcorr.github.io/
 
 Once running, the net-gargoyle will be collecting a catalog of connections it finds.
-The learner-watcher.cfg daemon will email by default root@localhost with eaech unique IP
+The learner-watcher.cfg daemon will email by default root@localhost with each unique IP
 at least once. To trigger the emails again, you can remove the associated lock file
 
 rm /var/tmp/learner/74.125.22.23.lock
