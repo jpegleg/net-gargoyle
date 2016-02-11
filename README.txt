@@ -13,13 +13,25 @@ sec.pl callable from a /usr bin location like /usr/local/bin/
 SEC documentation:
 https://simple-evcorr.github.io/
 
+Once running, the net-gargoyle will be collecting a catalog of connections it finds.
+The learner-watcher.cfg daemon will email by default root@localhost with eaech unique IP
+at least once. To trigger the emails again, you can remove the associated lock file
+
+rm /var/tmp/learner/74.125.22.23.lock
+
+You will find that sometimes you will need to lift the sorter lock:
+
+rm /var/tmp/lock-catalog-sorter
+
 Start up the net-gargoyle:
+
 sudo ./start-net-gargoyle.sh
 
 The stop doesn't really work yet:
+
 sudo ./stop-net-gargoyle.sh
 
-I have found I still have to clean up on of the child processes.
+I have found I still have to clean up on of the child processes...
 
 The connection collection happens at a default rate of 0.1 seconds 
 per connection + (usually) small amount of time.  With that, 
