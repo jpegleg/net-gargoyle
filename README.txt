@@ -19,7 +19,8 @@ at least once. To trigger the emails again, you can remove the associated lock f
 
 rm /var/tmp/learner/74.125.22.23.lock
 
-You will find that sometimes you will need to lift the sorter lock:
+You will find that sometimes you will need to lift the sorter lock. 
+This can be needed for multiple reasons, one is that you need to trigger emails again:
 
 rm /var/tmp/lock-catalog-sorter
 
@@ -41,3 +42,5 @@ it is to be noted that the collection only occurs at a rate of
   
 and any activity that happens between those intervals 
 will not be detected by a single gargoyle thread in that environment.
+
+The net-gargoyle is good for passive connection auditing and alerting on small to mid scale operations and alerting for "firewall-less" environments. The benefit is how quick it is to run on a system.
