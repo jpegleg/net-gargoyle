@@ -43,7 +43,7 @@ it is to be noted that the collection only occurs at a rate of
 and any activity that happens between those intervals 
 will not be detected by a single gargoyle thread in that environment.
 
-The net-gargoyle is good for passive connection auditing and alerting on 
+The net-gargoyle is good for connection auditing and alerting on 
 small to mid scale operations and alerting for "firewall-less" environments. 
 
 The benefit is how quick it is to get running on a system. 
