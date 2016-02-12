@@ -51,3 +51,9 @@ I can have the net-gargoyle patrolling any linux system in less than 30 seconds.
 
 Yes, it has a lot of file handles it uses. It uses the disk. But the catalog of ips is
 amazingly useful and the alerting just once per occurrence unless you chose otherwise is awesome.
+
+To manage the /var/log/net.log, I use cron and bubble-copter:
+
+0 0 1 * * /usr/local/bin/bubc root@localhost /var/log/ && cp /dev/null /var/log/net.log
+
+The code for bubc is here https://github.com/jpegleg/bubble-copter
