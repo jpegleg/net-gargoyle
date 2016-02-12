@@ -48,3 +48,6 @@ small to mid scale operations and alerting for "firewall-less" environments.
 
 The benefit is how quick it is to get running on a system. 
 I can have the net-gargoyle patrolling any linux system in less than 30 seconds.
+
+Yes, it has a lot of file handles it uses. It uses the disk. But the catalog of ips is
+amazingly useful and the alerting just once per occurrence unless you chose otherwise is awesome.
