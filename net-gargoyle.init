@@ -1,0 +1,30 @@
+#!/bin/bash
+# Net Gargoyle Init
+# Keep an eye out without a firewall and without root access.
+
+case "$1" in
+stop)
+kill -9 $(cat ./net-gargoyle.pid)
+kill -9 $(cat ,/net-gargoyle-sec.pid)
+rm -f ./net-gargoyle.pid ./net-gargoyle-sec.pid
+;;
+start)
+./net-gargoyle &
+echo "$!" > ./net-gargoyle.pid
+./net-gargoyle-sec &
+echo "$!" > ./net-gargoyle-sec.pid
+;;
+restart)
+kill -9 $(cat ./net-gargoyle.pid)
+kill -9 $(cat ,/net-gargoyle-sec.pid)
+rm -f ./net-gargoyle.pid ./net-gargoyle-sec.pid
+./net-gargoyle &
+echo "$!" > ./net-gargoyle.pid
+./net-gargoyle-sec &
+echo "$!" > ./net-gargoyle-sec.pid
+;;
+*)
+echo "Usage: net-gargoyle option"
+echo "Options include: start, stop, restart"
+exit;
+esac
