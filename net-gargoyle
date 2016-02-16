@@ -9,7 +9,7 @@ kill -9 $(cat ./net-gargoyle-sec.pid)
 rm -f ./net-gargoyle.pid ./net-gargoyle-sec.pid
 ;;
 start)
-./net-gargoyle &
+./gargoyle 0.1 &
 echo "$!" > ./net-gargoyle.pid
 ./net-gargoyle-sec &
 echo "$!" > ./net-gargoyle-sec.pid
@@ -17,8 +17,8 @@ echo "$!" > ./net-gargoyle-sec.pid
 restart)
 kill -9 $(cat ./net-gargoyle.pid)
 kill -9 $(cat ./net-gargoyle-sec.pid)
-rm -f ./net-gargoyle.pid ./net-gargoyle-sec.pid
-./net-gargoyle &
+rm -f ./net-gargoyle.pid ./net-gargoyle-sec.pid &&
+./gargoyle 0.1 &
 echo "$!" > ./net-gargoyle.pid
 ./net-gargoyle-sec &
 echo "$!" > ./net-gargoyle-sec.pid
