@@ -57,3 +57,22 @@ To manage the /var/log/net.log, I use cron and bubble-copter:
 0 0 1 * * /usr/local/bin/bubc root@localhost /var/log/ && cp /dev/null /var/log/net.log
 
 The code for bubc is here https://github.com/jpegleg/bubble-copter
+
+You can run this script in threads by directory as long as you keep the job in pwd or ./  
+...it uses a relative path unless you use the root install, which is a single thread managed
+in a more secure way.
+
+Example:
+
+for x in {1..9}; do 
+  mkdir "$x"; 
+  cp net-gargoyle-master.zip "$x"/;
+  cd "$x"/;
+  unzip net-gargoyle-master.zip
+  cd net-gargoyle-master
+  chmod +x ./*
+  cp /dev/null./learner-watcher.cfg
+  ./net-gargoyle start &
+  cd ../../
+done
+rm -f [1-9]/net-gargoyle-master/lock*
