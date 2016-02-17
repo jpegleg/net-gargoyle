@@ -4,10 +4,13 @@
 #   Install net-gargoyle, an adhoc network connection catalog and alerting system for Linux       #
 #                                                                                                 #
 ###################################################################################################
-# Edit the files and install them as a su would.                                            \
-# Although if you can do this, you can probably install a firewall                            \
-# that is more light weight that does the same thing but better, so... okay.                    \
-###################################################################################################
+#                   THIS SCRIPT WILL DO SILLY THINGS                                          \
+# Edit the files and install them as a su would.                                               \
+# Although if you can do this, you can probably install a firewall                              \
+# that is more light weight that does the same thing but better, so... okay.                     \
+# Another reason NOT to run this script is that using the files as is, will allow multi-threaded  \
+# Runing this script will set it to be single threaded and run by root.                            \
+################################################################################################### *
 #                                                                                                 #
 #   If this script has been run before (.pre-edit files exit) then you can restore them with $1   #
 #                                                                                                 #
