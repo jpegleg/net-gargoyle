@@ -1,4 +1,10 @@
 #!/bin/sh
+if [ -f ./sorter.pre-edit]; then
+  echo "Already backed up sorter.";
+else
+  cp sorter sorter.pre-edit;
+  sed -i 's/=./=\/var\/log.g' sorter
+fi
 chmod +x sorter
 chmod +x ./*sh
 mkdir -p /var/tmp/learner
