@@ -76,3 +76,15 @@ for x in {1..9}; do
   cd ../../
 done
 rm -f [1-9]/net-gargoyle-master/lock*
+
+crontab -e
+
+0 2 * * * cp /dev/null /tmp/1/net-gargoyle-master/net.log
+0 3 * * * cp /dev/null /tmp/2/net-gargoyle-master/net.log
+0 4 * * * cp /dev/null /tmp/3/net-gargoyle-msster/net.log
+0 5 * * * cp /dev/null /tmp/4/net-gargoyle-master/net.log
+0 6 * * * cp /dev/null /tmp/5/net-gargoyle-master/net.log
+0 7 * * * cp /dev/null /tmp/6/net-gargoyle-master/net.log
+0 8 * * * cp /dev/null /tmp/7/net-gargoyle-master/net.log
+0 9 * * * cp /dev/null /tmp/8/net-gargoyle-master/net.log
+0 15 * * * cp /dev/null /tmp/9/net-gargoyle-master/net.log
