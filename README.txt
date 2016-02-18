@@ -75,7 +75,7 @@ for x in {1..9}; do
   ./net-gargoyle start &
   cd ../../
 done
-rm -f [1-9]/net-gargoyle-master/lock*
+rm -f [1-9]/net-gargoyle-master/lock-catalog-sorter
 
 crontab -e
 
