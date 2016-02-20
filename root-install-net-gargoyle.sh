@@ -21,6 +21,7 @@ if [ "$1"="restore" ]; then
   cp learner.cfg learner.cfg.pre-edit;
   cp net-gargoyle.pre-edit net-gargoyle;
   cp net-gargoyle-sec.pre-edit net-gargoyle-sec;
+  exit 0;
 else
   echo "Not restoring .pre-edits...";
 fi
