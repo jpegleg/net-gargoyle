@@ -4,7 +4,7 @@
 #   Install net-gargoyle, an adhoc network connection catalog and alerting system for Linux       #
 #                                                                                                 #
 ###################################################################################################
-#                   THIS SCRIPT WILL DO SILLY THINGS                                          \
+#                   Utility for net-gargoyle installtion                                      \
 # Edit the files and install them as a su would.                                               \
 # Although if you can do this, you can probably install a firewall                              \
 # that is more light weight that does the same thing but better, so... okay.                     \
