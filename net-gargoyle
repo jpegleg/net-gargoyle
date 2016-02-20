@@ -2,6 +2,22 @@
 # Net Gargoyle Init
 # Keep an eye out without a firewall and without root access.
 
+if [ -f /bin/ss ]; then
+  ./root-install-net-gargoyle.sh restore
+  echo "Using ss"
+else
+  echo "looking for netstat instead, shame on you";
+  if [ -f /bin/netstat ]; then
+    echo "found netstat."
+    echo "updating net-gargoyle..."
+    sed -i 's/ss\ \-an/netstat\ \-tan/g' gargoyle
+  else
+    echo "ss or netstat not found in /bin/";
+    echo "FATAL ERROR";
+    exit 1;
+  fi
+fi  
+
 case "$1" in
 stop)
 kill -9 $(cat ./net-gargoyle.pid)
