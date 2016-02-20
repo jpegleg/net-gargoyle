@@ -16,7 +16,8 @@
 #                                                                                                 #
 ###################################################################################################
 if [ "$1"="restore" ]; then
-  cp sorter.pre-editsorter;
+  cp sorter.pre-edit sorter;
+  cp $(ls -lath gargoyle.pre-edit* | rev | tail -n 1 | cut -d' ' -f1 | rev) gargoyle
   cp learner.cfg learner.cfg.pre-edit;
   cp net-gargoyle.pre-edit net-gargoyle;
   cp net-gargoyle-sec.pre-edit net-gargoyle-sec;
@@ -28,6 +29,16 @@ fi
 #   Check to see if "ss" is available, otherwise revert to the deprecated netstat.                #
 #                                                                                                 #
 ###################################################################################################
+if [ -f gargoyle.pre-edit ]; then
+  echo "found a gargoyle.pre-edit in $(pwd)..."
+  echo "WARNING: the script has been run once before"
+  cp gargoyle.pre-edit gargoyle.pre-edit.$(echo $RANDOM)
+  echo "Make additional backup of $(ls -larth gargoyle.pre-edit.*)"
+  echo "Now overwritting gargoyle.pre-edit with gargoyle..."
+  cp gargoyle gargoyle.pre-edit;
+else
+  cp gargoyle gargoyle.pre-edit;
+fi
 if [ -f /bin/ss ]; then
   echo "using ss"
 else
