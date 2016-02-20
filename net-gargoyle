@@ -3,7 +3,7 @@
 # Keep an eye out without a firewall and without root access.
 
 if [ -f /bin/ss ]; then
-  ./root-install-net-gargoyle.sh restore
+  ./root-install-net-gargoyle.sh restore 2> /dev/null
   echo "Using ss"
 else
   echo "looking for netstat instead, shame on you";
