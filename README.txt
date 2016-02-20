@@ -20,7 +20,8 @@ at least once. To trigger the emails again, you can remove the associated lock f
 rm /var/tmp/learner/74.125.22.23.lock
 
 You will find that sometimes you will need to lift the sorter lock. 
-This can be needed for multiple reasons, one is that you need to trigger emails again:
+This can be needed for multiple reasons, one is that you need to trigger emails again.
+I often have cron entries that remove this file, example:
 
 rm /var/tmp/lock-catalog-sorter
 
