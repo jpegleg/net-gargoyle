@@ -80,3 +80,20 @@ cp sorter /usr/local/bin/
 cp net-gargoyle /usr/local/bin
 chmod +x /usr/local/bin/sorter
 chmod +x /usr/local/bin/net-gargoyle
+###################################################################################################
+#                                                                                                 #
+#                     Make sure things worked...                                                  #
+#                                                                                                 #
+###################################################################################################
+if [ -f /usr/local/bin/net-gargoyle ]; then
+  echo "$(md5sum /usr/local/bin/net-gargoyle; ls -larth /usr/local/bin/net-gargoyle)"
+  echo "Found net-gargoyle installed to /usr/local/bin/"
+else
+  echo "net-gargoyle not found in /usr/local/bin! Something went wrong."
+  echo "You will likely need to start from the beginning."
+  echo "Or, do a custom install..."
+  echo "If you don't have permission to root install, run the script like this now to undo the changes for root to the code and get started:";
+  echo "./root-install-net-gargoyle.sh restore";
+  echo "./net-gargoyle start";
+  exit 1
+fi
