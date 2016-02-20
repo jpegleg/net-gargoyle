@@ -25,7 +25,7 @@ else
 fi
 ################################################################################################### *
 #                                                                                                 #
-#   check to see if "ss" is available, otherwise revert to the deprecated netstat                 #
+#   Check to see if "ss" is available, otherwise revert to the deprecated netstat.                #
 #                                                                                                 #
 ###################################################################################################
 if [ -f /bin/ss ]; then
@@ -34,8 +34,10 @@ else
   echo "looking for netstat instead, shame on you";
   if [ -f /bin/netstat ]; then
     echo "found netstat."
-    else
-    echo "ss or netstat not found in /bin!";
+    echo "updating net-gargoyle..."
+    sed -i 's/ss\ \-an/netstat\ \-tan/g' gargoyle
+  else
+    echo "ss or netstat not found in /bin/";
     echo "FATAL ERROR";
     exit 1;
   fi
