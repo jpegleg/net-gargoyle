@@ -59,12 +59,12 @@ fi
 #   Edit the files to use /var/tmp/learner /etc /usr/local/bin and /var/log like a normal admin.  #
 #                                                                                                 #
 ###################################################################################################
-if [ $(whoami) -eq root]; then
+if [ $(whoami) -eq root ]; then
   echo "Running as root"
 else
   echo "Running as $(whoami) - might not work unless you have sudo access."
 fi
-if [ -f ./sorter.pre-edit]; then
+if [ -f ./sorter.pre-edit ]; then
   echo "Already backed up sorter.";
 else
   cp sorter sorter.pre-edit;
