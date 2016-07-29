@@ -27,13 +27,11 @@ rm /var/tmp/lock-catalog-sorter
 
 Start up the net-gargoyle:
 
-sudo ./start-net-gargoyle.sh
+sudo ./net-gargoyle start
 
-The stop doesn't really work yet:
+Stop net-gargoyle:
 
-sudo ./stop-net-gargoyle.sh
-
-I have found I still have to clean up on of the child processes...
+sudo ./net-gargoyle stop
 
 The connection collection happens at a default rate of 0.1 seconds 
 per connection + (usually) small amount of time.  With that, 
