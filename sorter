@@ -33,7 +33,7 @@ else
         cp "$wkdir"/lock.dat.tmp "$wkdir"/lock.dat;
         comm -23 ./net.log "$wkdir"/lock.dat | sort -u > "$wkdir"/new.catalog;
         cat "$wkdir"/new.catalog >> "$wkdir"/new-catalog.log;
-        cp "$wkdir"/lock.dat /var/log/net.log;
+        cp "$wkdir"/lock.dat "$wkdir"/net.log;
         rm "$wkdir"/lock-catalog-sorter;
 fi
 
