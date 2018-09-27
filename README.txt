@@ -9,6 +9,7 @@ Set up pattern learning but with these configs and sorter file.
 
 Dependancies:
 sec.pl callable from a /usr bin location like /usr/local/bin/
+procmail (lockfile)
 
 SEC documentation:
 https://simple-evcorr.github.io/
