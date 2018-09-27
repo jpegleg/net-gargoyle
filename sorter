@@ -29,7 +29,7 @@ if [ ! -f "$wkdir"/lock-catalog-sorter ]; then
         cp "$wkdir"/net.tmp "$wkdir"/net.log;
         sort -u "$wkdir"/lock.dat > "$wkdir"/lock.dat.tmp;
         cp "$wkdir"/lock.dat.tmp "$wkdir"/lock.dat;
-        comm -23 ./net.log "$wkdir"/lock.dat | sort -u > "$wkdir"/new.catalog;
+        comm -23 "$wkdir"/net.log "$wkdir"/lock.dat | sort -u > "$wkdir"/new.catalog;
         cat "$wkdir"/new.catalog >> "$wkdir"/new-catalog.log;
         cp "$wkdir"/lock.dat "$wkdir"/net.log;
         rm -f "$wkdir"/lock-catalog-sorter;
