@@ -14,6 +14,8 @@ cp learner-watcher.cfg /etc/
 cp sorter /usr/local/bin/
 cp gargoyle /usr/local/bin
 cp net-gargoyle /usr/local/bin
+cp net-gargoyle-sec /usr/local/bin
 chmod +x /usr/local/bin/sorter
 chmod +x /usr/local/bin/net-gargoyle
 chmod +x /usr/local/bin/gargoyle
+chmod +x /usr/local/bin/net-gargoyle-sec
