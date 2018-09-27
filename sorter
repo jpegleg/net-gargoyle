@@ -1,7 +1,8 @@
 #!/bin/bash
 # Search for unique IPs with "(\d+)\.(\d+)\.(\d+)\.(\d+)" ss(netstat) output and report new occurrnces.
 lockfile -r 0 /var/tmp/lock-catalog-sorter || exit 1
-wkdir=/var/tmp/learner
+  
+  wkdir=/var/tmp/learner
   touch "$wkdir"/lock-catalog-sorter;
   touch "$wkdir"/catalog.log;
   touch "$wkdir"/catalog.tmp;
