@@ -1,6 +1,6 @@
 #!/bin/bash
 # Search for unique IPs with "(\d+)\.(\d+)\.(\d+)\.(\d+)" ss(netstat) output and report new occurrnces.
-wkdir=.
+wkdir=/var/tmp/learner
 mkdir -p "$wkdir"/ 2> /dev/null
 if [ ! -f "$wkdir"/lock-catalog-sorter ]; then
         touch "$wkdir"/lock-catalog-sorter;
