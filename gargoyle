@@ -2,7 +2,7 @@
 # Read from ss (netstat) every X seconds, depending on your disk space.
 while true; do
   ss -an | grep -v State | while read line; do
-    echo " $line" >> /var/log/net.log &&
+    echo " $line" >> /var/tmp/learner/net.log &&
     sleep "$1";
   done;
 done
