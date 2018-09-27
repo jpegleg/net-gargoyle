@@ -59,9 +59,9 @@ Example management style with cron:
 
 crontab -e
 
-0 2 * * * cp /dev/null /var/tmp/learner/net.log
-5 * * * *  rm /var/tmp/learner/lock-catalog-sorter
+4 2 * * * cp /dev/null /var/tmp/learner/net.log
 15 4 * * * cp /dev/null /var/tmp/learner/learner.log
 
 
-This thing is wild, and is made for wild situations.
+If you can't access the lockfile program, then you can replace that with another lock file mechanism
+in the sorter script.
