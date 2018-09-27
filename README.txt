@@ -51,31 +51,12 @@ I can have the net-gargoyle patrolling any linux system in less than 30 seconds.
 Yes, it has a lot of file handles it uses. It uses the disk. But the catalog of ips is
 amazingly useful and the alerting just once per occurrence unless you chose otherwise is awesome.
 
-
-You can run this script in threads by directory as long as you keep the job in pwd or ./  
-...it uses a relative path unless you use the root install, which is a single thread managed
-in a more secure way.
+Edit the files to use different paths etc as needed, if you are in a chroot jail etc.
 
 Example management style with cron:
 
 
 crontab -e
 
-0 2 * * * cp /dev/null /tmp/1/net-gargoyle-master/net.log
-0 3 * * * cp /dev/null /tmp/2/net-gargoyle-master/net.log
-0 4 * * * cp /dev/null /tmp/3/net-gargoyle-msster/net.log
-0 5 * * * cp /dev/null /tmp/4/net-gargoyle-master/net.log
-0 6 * * * cp /dev/null /tmp/5/net-gargoyle-master/net.log
-0 7 * * * cp /dev/null /tmp/6/net-gargoyle-master/net.log
-0 8 * * * cp /dev/null /tmp/7/net-gargoyle-master/net.log
-0 9 * * * cp /dev/null /tmp/8/net-gargoyle-master/net.log
-0 15 * * * cp /dev/null /tmp/9/net-gargoyle-master/net.log
-0 * * * *  rm /tmp/1/net-gargoyle-master/lock-catalog-sorter
-6 * * * *  rm /tmp/2/net-gargoyle-master/lock-catalog-sorter
-12 * * * *  rm /tmp/3/net-gargoyle-master/lock-catalog-sorter
-18 * * * *  rm /tmp/4/net-gargoyle-master/lock-catalog-sorter
-24 * * * *  rm /tmp/5/net-gargoyle-master/lock-catalog-sorter
-30 * * * *  rm /tmp/6/net-gargoyle-master/lock-catalog-sorter
-36 * * * *  rm /tmp/7/net-gargoyle-master/lock-catalog-sorter
-42 * * * *  rm /tmp/8/net-gargoyle-master/lock-catalog-sorter
-48 * * * *  rm /tmp/9/net-gargoyle-master/lock-catalog-sorter
+0 2 * * * cp /dev/null /var/log/net.log
+*/5 * * * *  rm /var/tmp/learner/lock-catalog-sorter
