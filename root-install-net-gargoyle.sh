@@ -4,20 +4,16 @@
 #   Install net-gargoyle, an adhoc network connection catalog and alerting system for Linux       #
 #                                                                                                 #
 ###################################################################################################
-
-###################################################################################################
-#                                                                                                 #
-#                     Alright, install the files.                                                 #
-#                                                                                                 #
-###################################################################################################
 chmod +x sorter
 chmod +x ./*sh
 mkdir -p /var/tmp/learner
-touch /var/log/net.log
-touch /var/log/catalog.log
+touch /var/tmp/learner/net.log
+touch /var/tmp/learner/catalog.log
 cp learner.cfg /etc/
 cp learner-watcher.cfg /etc/
 cp sorter /usr/local/bin/
+cp gargoyle /usr/local/bin
 cp net-gargoyle /usr/local/bin
 chmod +x /usr/local/bin/sorter
 chmod +x /usr/local/bin/net-gargoyle
+chmod +x /usr/local/bin/gargoyle
