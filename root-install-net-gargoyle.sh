@@ -16,7 +16,7 @@
 #                                                                                                 #
 ###################################################################################################
 if [ "$1"="restore" ]; then
-  cp sorter.pre-edit sorter;
+  cp sorter sorter.pre-edit;
   cp $(ls -lath gargoyle.pre-edit* | rev | tail -n 1 | cut -d' ' -f1 | rev) gargoyle
   cp learner.cfg learner.cfg.pre-edit;
   cp net-gargoyle.pre-edit net-gargoyle;
