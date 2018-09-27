@@ -58,5 +58,10 @@ Example management style with cron:
 
 crontab -e
 
-0 2 * * * cp /dev/null /var/log/net.log
+0 2 * * * cp /dev/null /var/tmp/learner/net.log
 */5 * * * *  rm /var/tmp/learner/lock-catalog-sorter
+*/17 * * * * pkill -9 sorter
+15 4 * * * cp /dev/null /var/tmp/learner/learner.log
+
+
+This thing is wild, and is made for wild situations.
