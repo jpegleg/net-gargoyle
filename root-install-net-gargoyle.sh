@@ -8,32 +8,19 @@
 # Edit the files and install them as a su would.                                               \
 # Although if you can do this, you can probably install a firewall                              \
 # that is more light weight that does the same thing but better, so... okay.                     \
-# Another reason NOT to run this script is that using the files as is, will allow multi-threaded  \
-# Runing this script will set it to be single threaded and run by root.                            \
+#   
+# Running this script will set it to be single threaded and run by root.                            \
 ################################################################################################### *
-#                                                                                                 #
-#   If this script has been run before (.pre-edit files exit) then you can restore them with $1   #
-#                                                                                                 #
-###################################################################################################
-if [ "$1"="restore" ]; then
-  cp sorter sorter.pre-edit;
-  cp $(ls -lath gargoyle.pre-edit* | rev | tail -n 1 | cut -d' ' -f1 | rev) gargoyle
-  cp learner.cfg learner.cfg.pre-edit;
-  cp net-gargoyle net-gargoyle.pre-edit;
-  cp net-gargoyle-sec net-gargoyle-sec.pre-edit;
-  exit 0;
-else
-  echo "Not restoring .pre-edits...";
-fi
+
 ################################################################################################### *
 #                                                                                                 #
 #   Check to see if "ss" is available, otherwise revert to the deprecated netstat.                #
 #                                                                                                 #
 ###################################################################################################
-if [ -f gargoyle.pre-edit ]; then
+if [ -f ./gargoyle.pre-edit ]; then
   echo "found a gargoyle.pre-edit in $(pwd)..."
-  echo "WARNING: the script has been run once before"
-  cp gargoyle.pre-edit gargoyle.pre-edit.$(echo $RANDOM)
+  echo "( script has been run before)"
+  cp gargoyle gargoyle.pre-edit.$(date+%Y%M%D)
   echo "Make additional backup of $(ls -larth gargoyle.pre-edit.*)"
   echo "Now overwritting gargoyle.pre-edit with gargoyle..."
   cp gargoyle gargoyle.pre-edit;
