@@ -18,7 +18,7 @@ echo "$!" > /var/run/net-gargoyle-sec.pid
 restart)
 kill -9 $(cat /var/run/net-gargoyle.pid)
 kill -9 $(cat /var/run/net-gargoyle-sec.pid)
-rm -f net-gargoyle.pid ./net-gargoyle-sec.pid &&
+rm -f net-gargoyle.pid /var/run/net-gargoyle-sec.pid &&
 gargoyle 0.1 &
 echo "$!" > /var/run/net-gargoyle.pid
 net-gargoyle-sec &
