@@ -2,9 +2,7 @@
 # Search for unique IPs with "(\d+)\.(\d+)\.(\d+)\.(\d+)" ss(netstat) output and report new occurrnces.
 wkdir=.
 mkdir -p "$wkdir"/ 2> /dev/null
-if [ -f "$wkdir"/lock-catalog-sorter ]; then
-        exit 0;
-else
+if [ ! -f "$wkdir"/lock-catalog-sorter ]; then
         touch "$wkdir"/lock-catalog-sorter;
         touch "$wkdir"/catalog.log;
         touch "$wkdir"/catalog.tmp;
@@ -34,7 +32,5 @@ else
         comm -23 ./net.log "$wkdir"/lock.dat | sort -u > "$wkdir"/new.catalog;
         cat "$wkdir"/new.catalog >> "$wkdir"/new-catalog.log;
         cp "$wkdir"/lock.dat "$wkdir"/net.log;
-        rm "$wkdir"/lock-catalog-sorter;
+        rm -f "$wkdir"/lock-catalog-sorter;
 fi
-
-ps aux | grep "$wkdir/sorter" | grep -v grep | grep -v vi | awk '{print $2}' | xargs kill -9
