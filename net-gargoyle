@@ -1,43 +1,28 @@
 #!/bin/bash
 # Net Gargoyle Init
-# Keep an eye out without a firewall and without root access.
+# Keep an eye out without a firewall or other limited environments.
 
-if [ -f /bin/ss ]; then
-  ./root-install-net-gargoyle.sh restore 2> /dev/null
-  echo "Using ss"
-else
-  echo "looking for netstat instead, shame on you";
-  if [ -f /bin/netstat ]; then
-    echo "found netstat."
-    echo "updating net-gargoyle..."
-    sed -i 's/ss\ \-an/netstat\ \-tan/g' gargoyle
-  else
-    echo "ss or netstat not found in /bin/";
-    echo "FATAL ERROR";
-    exit 1;
-  fi
-fi  
 
 case "$1" in
 stop)
-kill -9 $(cat ./net-gargoyle.pid)
-kill -9 $(cat ./net-gargoyle-sec.pid)
-rm -f ./net-gargoyle.pid ./net-gargoyle-sec.pid
+kill -9 $(cat /var/run/net-gargoyle.pid)
+kill -9 $(cat /var/run/net-gargoyle-sec.pid)
+rm -f /var/run/net-gargoyle.pid /var/run/net-gargoyle-sec.pid
 ;;
 start)
-./gargoyle 0.1 &
-echo "$!" > ./net-gargoyle.pid
-./net-gargoyle-sec &
-echo "$!" > ./net-gargoyle-sec.pid
+gargoyle 0.1 &
+echo "$!" > /var/run/net-gargoyle.pid
+net-gargoyle-sec &
+echo "$!" > /var/run/net-gargoyle-sec.pid
 ;;
 restart)
-kill -9 $(cat ./net-gargoyle.pid)
-kill -9 $(cat ./net-gargoyle-sec.pid)
-rm -f ./net-gargoyle.pid ./net-gargoyle-sec.pid &&
-./gargoyle 0.1 &
-echo "$!" > ./net-gargoyle.pid
-./net-gargoyle-sec &
-echo "$!" > ./net-gargoyle-sec.pid
+kill -9 $(cat /var/run/net-gargoyle.pid)
+kill -9 $(cat /var/run/net-gargoyle-sec.pid)
+rm -f net-gargoyle.pid ./net-gargoyle-sec.pid &&
+gargoyle 0.1 &
+echo "$!" > /var/run/net-gargoyle.pid
+net-gargoyle-sec &
+echo "$!" > /var/run/net-gargoyle-sec.pid
 ;;
 *)
 echo "Usage: net-gargoyle option"
