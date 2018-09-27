@@ -2,5 +2,5 @@
 #
 #    Start up a daemon for reading the template "net.log" in /var/log for patterns.
 ########################################################--------------------------------->
-sec.pl --input=./net.log --conf=./learner.cfg --log=./learner/learner.log --debug=6
-sec.pl --input=./new-catalog.log --conf=./learner-watcher.cfg --log=./learner/learner-watcher.log
+sec.pl --input=/var/log/net.log --conf=/etc//learner.cfg --log=/var/log/learner.log --debug=6
+sec.pl --input=/var/tmp/learner/new-catalog.log --conf=/etc/learner-watcher.cfg --log=/var/tmp/learner/learner-watcher.log
