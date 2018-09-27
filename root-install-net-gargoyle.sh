@@ -19,8 +19,8 @@ if [ "$1"="restore" ]; then
   cp sorter sorter.pre-edit;
   cp $(ls -lath gargoyle.pre-edit* | rev | tail -n 1 | cut -d' ' -f1 | rev) gargoyle
   cp learner.cfg learner.cfg.pre-edit;
-  cp net-gargoyle.pre-edit net-gargoyle;
-  cp net-gargoyle-sec.pre-edit net-gargoyle-sec;
+  cp net-gargoyle net-gargoyle.pre-edit;
+  cp net-gargoyle-sec net-gargoyle-sec.pre-edit;
   exit 0;
 else
   echo "Not restoring .pre-edits...";
