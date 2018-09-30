@@ -61,7 +61,9 @@ crontab -e
 
 4 2 * * * cp /dev/null /var/tmp/learner/net.log
 15 4 * * * cp /dev/null /var/tmp/learner/learner.log
-
+21 5 * * 7 tar czvf /var/tmp/learner.backup.tgz /var/tmp/learner/ && rm -rf /var/tmp/learner/*
 
 If you can't access the lockfile program, then you can replace that with another lock file mechanism
 in the sorter script.
+
+
