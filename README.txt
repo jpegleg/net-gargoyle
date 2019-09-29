@@ -1,4 +1,10 @@
 # net-gargoyle
+
+# This is a low tech solution, an emergency tool. If you are designing a system, don't use this.
+# This is for a situation where you have an already running system that you can't change that
+# doesn't log network information, and you need to quickly start collecting network data
+# for a temporary period of time!
+
 Read the Simple Event Correlator documentation: https://simple-evcorr.github.io/
 
 Monitor your network connections and create a catalog of connections with the pattern-learner template.
