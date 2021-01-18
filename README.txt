@@ -1,5 +1,11 @@
 # net-gargoyle
 
+
+
+# USE THIS INSTEAD: https://github.com/jpegleg/net-gargoyle2
+
+
+
 # This is a low tech solution, an emergency tool. If you are designing a system, don't use this.
 # This is for a situation where you have an already running system that you can't change that
 # doesn't log network information, and you need to quickly start collecting network data
